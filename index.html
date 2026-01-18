@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,7 +46,7 @@
       background: rgba(255, 255, 255, 0.4);
       padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
     input {
@@ -55,7 +56,7 @@
       margin-bottom: 1rem;
       border-radius: 6px;
       border: 1px solid #333;
-      background-color: rgba(255,255,255,0.85);
+      background-color: rgba(255, 255, 255, 0.85);
     }
 
     button {
@@ -73,9 +74,10 @@
     }
 
     @media (min-width: 768px) {
-      body{
+      body {
         overflow: hidden;
       }
+
       .wrapper {
         max-width: 420px;
       }
@@ -92,7 +94,7 @@
     <img src="img/logo.png" alt="Logo" class="logo">
 
     <div class="card">
-      <input type="text" id="text" placeholder="Enter text">
+      <input type="text" id="text" placeholder="Enter Link">
       <button onclick="makeQR()">Make QR</button>
       <div id="qr"></div>
     </div>
@@ -114,11 +116,19 @@
         qrDiv.appendChild(canvas);
 
         const link = document.createElement("a");
-        link.download = "qr-code.png";
+        const input = document.getElementById("text");
+        const url = input.value;
+
+
+        const filename = url.split('/').pop();
+
+        link.download = filename;
+
         link.href = canvas.toDataURL();
         link.click();
       });
     }
   </script>
 </body>
+
 </html>
