@@ -119,14 +119,10 @@
         qrDiv.appendChild(canvas);
 
         const link = document.createElement("a");
-        const input = document.getElementById("text");
-        const url = input.value;
-
-
-        const filename = url.split('/').pop();
-
-        link.download = filename;
-
+        const now = new Date();
+        const date = now.getFullYear() + "-" + String(now.getMonth() + 1), padStart(2, "0") + "-" + String(now,getDate()).padStart(2,"0");
+        
+        link.download = "QR-CSTA-${date}.png";
         link.href = canvas.toDataURL();
         link.click();
       });
